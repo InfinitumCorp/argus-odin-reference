@@ -1,0 +1,5 @@
+detection_id,sensor,lat,lon,alt_m,velocity_mps,heading_deg,raw_class,confidence,spectrum_anomaly,is_potential_threat
+OBS-1,POLLEN-SWARM-01,38.9075,-77.0365,45,12,85,uas,0.91,false,true
+OBS-2,NEMESIS-FPV-03,38.9076,-77.0364,48,11,88,uas,0.87,false,true
+OBS-3,CAMERA-NORTH-GATE,38.9074,-77.0366,2,0,90,uas,0.78,false,true
+OBS-4,EON-WEARABLE-07,38.9080,-77.0370,1,1,120,person,0.82,true,false
