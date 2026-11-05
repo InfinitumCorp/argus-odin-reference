@@ -1,9 +1,8 @@
-# >_ARGUS™ Military Edition
-# Reference Implementation
+# >_ARGUS™ Military Edition — older reference copy
 
-**Military use only.** Human-commanded. Edge-first. Private Firmament provenance. No public token.
+**Canonical code is [argus-military-reference](https://github.com/InfinitumCorp/argus-military-reference).** This repository is the shorter earlier copy. Do not add features here.
 
-ODIN° Observe Layer — multi-sensor fusion, Kalman tracking, advisory AI defense, spectrum awareness, edge store, and private provenance.
+Military use only. Human-commanded. Advisory recommendations only. Private Firmament provenance. No public token.
 
 ## Usage
 
@@ -12,6 +11,4 @@ python main.py
 python main.py datasets/sample_observations.csv
 ```
 
-Open `cop.html` after running for the Common Operating Picture.
-
-All defensive recommendations remain advisory.
+`cop.html` is written by the canonical repo's `main.py` (`argus.cop.generate_cop_html`). This copy does not ship a COP page.
