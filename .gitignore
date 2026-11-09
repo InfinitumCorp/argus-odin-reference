@@ -1,0 +1,6 @@
+# Pinned v2fly geo binaries downloaded by scripts/fetch_geo.py.
+# Checksums live in geo.lock.json. Do not commit these files.
+data/geo/
+
+__pycache__/
+*.py[cod]

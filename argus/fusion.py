@@ -5,6 +5,7 @@ from argus.tracker import MultiObjectTracker
 from argus.spectrum import SpectrumFusion
 from argus.anticipation import AnticipationEngine
 from argus.detector import Detector, SimulatedDetector
+from argus.geo import apply_geo_hook
 
 class ArgusFusionEngine:
     def __init__(self, detector=None):
@@ -28,7 +29,7 @@ class ArgusFusionEngine:
         self.alerts.sort(key=lambda a: a.priority, reverse=True)
         pic = {"timestamp": datetime.now(timezone.utc).isoformat(), "track_count": len(tracks), "alert_count": len(self.alerts), "tracks": [t.to_dict() for t in tracks], "defense_alerts": [a.to_dict() for a in self.alerts], "spectrum": spec}
         pic["forecasts"] = self.anticipation.forecast(pic)
-        return pic
+        return apply_geo_hook(pic, raw)
     def _alert(self, t):
         ttype = ThreatType.UAS if t.classification.value == "uas" else ThreatType.ANOMALOUS_TRACK
         rec = "Advisory only. Human approval required."
