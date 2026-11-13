@@ -1,0 +1,9 @@
+# Downloaded v2fly geo datasets. Never commit the binaries.
+/data/geo/
+
+# Persisted local options, including the geo-routing toggle.
+/argus_settings.json
+
+__pycache__/
+*.py[cod]
+.pytest_cache/

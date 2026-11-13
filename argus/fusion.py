@@ -7,12 +7,13 @@ from argus.anticipation import AnticipationEngine
 from argus.detector import Detector, SimulatedDetector
 
 class ArgusFusionEngine:
-    def __init__(self, detector=None):
+    def __init__(self, detector=None, geo=None):
         self.detector = detector or SimulatedDetector()
         self.tracker = MultiObjectTracker()
         self.spectrum = SpectrumFusion()
         self.anticipation = AnticipationEngine()
         self.alerts = []
+        self.geo = geo
     def ingest_and_fuse(self, raw):
         self.alerts.clear()
         dets = self.detector.detect(raw)
@@ -28,6 +29,8 @@ class ArgusFusionEngine:
         self.alerts.sort(key=lambda a: a.priority, reverse=True)
         pic = {"timestamp": datetime.now(timezone.utc).isoformat(), "track_count": len(tracks), "alert_count": len(self.alerts), "tracks": [t.to_dict() for t in tracks], "defense_alerts": [a.to_dict() for a in self.alerts], "spectrum": spec}
         pic["forecasts"] = self.anticipation.forecast(pic)
+        if self.geo is not None:
+            pic["geo"] = self.geo.annotate(raw)
         return pic
     def _alert(self, t):
         ttype = ThreatType.UAS if t.classification.value == "uas" else ThreatType.ANOMALOUS_TRACK
